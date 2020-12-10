@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Resume Management System | Registration Page{% endblock %}
+{% block body %}
+    <style>
+    td{
+        padding-top: 20px;
+    }
+    th{
+        padding-top: 20px;
+    }
+    </style>
+    <div class="card m-4">
+    <h3 class="bg-warning text-center">Registration Page</h3>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <th>Full Name</th>
+                <td><input type="text" class="form-control" name="name" maxlength="100" required="" id="id_name"></td>
+            </tr>
+            <tr>
+                <th>Mobile Number</th>
+                <td><input type="number" class="form-control" name="contact" required="" id="id_contact"></td>
+            </tr>
+            <tr>
+                <th>User Name(Email)</th>
+                <td><input type="email" class="form-control" name="email" maxlength="254" required="" id="id_email"></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" class="form-control" name="password" required="" id="id_password"></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="hidden" class="form-control" name="otp" required="" id="id_otp" value="0"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" class="btn btn-warning mb-4">Submit</button>
+                </td>
+            </tr>
+        </table>
+{#        <p class="alert-danger m-4">{% for x in messages %}{{ x }}{% endfor %}</p>#}
+
+    </form>
+    </div>
+{% endblock %}
+
+

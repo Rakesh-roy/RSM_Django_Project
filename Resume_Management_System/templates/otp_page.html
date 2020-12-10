@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Resume Management System | Registration Page{% endblock %}
+{% block body %}
+    <style>
+    th{
+        padding: 20px 0;
+    }
+    td{
+        padding: 20px;
+    }
+    </style>
+    <div class="card m-4">
+    <h3 class="bg-warning text-center">OTP Validation</h3>
+    <form action="{% url 'check_otp' %}" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                <th>Mobile Number</th>
+                <td><input type="number" class="form-control" name="cno" maxlength="100" required=""></td>
+            </tr>
+            <tr>
+                <th>OTP</th>
+                <td><input type="number" class="form-control" name="otp" required=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" class="btn btn-warning">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    </div>
+{% endblock %}
+
+
