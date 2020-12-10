@@ -23,25 +23,26 @@ def register(request):
 
 
 def login(request):
-    if request.method == 'POST':
-        user = request.POST.get('user')
-        password = request.POST.get('password')
-        try:
-            data = RegistrationModel.objects.get(email=user, password=password)
-            print(data.status)
-            if data.status == 'pending':
-                messages.error(request,'Your Registration is still Pending..!')
-                redirect('login')
-            if data.status == 'closed':
-                messages.error(request, 'Your Profile is Blocked..!')
-                redirect('login')
-            if data.status == 'approved':
-                return render(request,'profile.html')
-        except RegistrationModel.DoesNotExist:
-            messages.error(request,'Invalid Credentials..!')
-            redirect('login')
-
     return render(request,'login.html')
+
+
+def check_user(request):
+    user = request.POST.get('user')
+    password = request.POST.get('password')
+    try:
+        data = RegistrationModel.objects.get(email=user, password=password)
+        if data.status == 'pending':
+            messages.error(request,'Your Registration is still Pending..!')
+            redirect('login')
+        if data.status == 'closed':
+            messages.error(request, 'Your Profile is Blocked..!')
+            redirect('login')
+        request.session['contact'] = data.contact
+        request.session['name'] = data.name
+        return redirect('profile')
+    except RegistrationModel.DoesNotExist:
+        messages.error(request,'Invalid User..!')
+        redirect('login')
 
 
 def otp_page(request):
@@ -56,7 +57,22 @@ def check_otp(request):
         data = RegistrationModel.objects.get(contact=cno, otp=otp)
         data.status = 'approved'
         data.save()
-        return render(request,'profile.html')
+        return redirect('profile')
+
     except RegistrationModel.DoesNotExist:
         messages.error(request, 'Invalid OTP..!')
         return redirect('otp_page')
+
+
+def profile(request):
+    return render(request,'profile.html')
+
+
+def logout(request):
+    del request.session['contact']
+    del request.session['name']
+    return redirect('home')
+
+
+def about_us(request):
+    return render(request,'about_us.html')

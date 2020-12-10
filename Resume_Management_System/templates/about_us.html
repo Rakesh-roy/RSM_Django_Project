@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Resume Management System | Registration Page{% endblock %}
+{% block body %}
+    <style>
+    th{
+        padding: 20px 0;
+    }
+    td{
+        padding: 20px;
+    }
+    .about-us img{
+        height: 20px;
+    }
+    </style>
+    <div class="card m-4">
+    <h3 class="bg-warning text-center">About Us</h3>
+    <table align="center">
+        <tr>
+            <td><img src="{% static 'phone.png' %}" class="about-us" height="40" width="40"></td>
+            <th>+91 9876543210</th>
+        </tr>
+        <tr>
+            <td><img src="{% static 'mail.png' %}" class="about-us" height="40" width="40"></td>
+            <th>rsm@service.com</th>
+        </tr>
+        <tr>
+            <td><img src="{% static 'location.png' %}" class="about-us" height="40" width="40"></td>
+            <th>Hyderabad</th>
+        </tr>
+    </table>
+    </div>
+{% endblock %}
+
+

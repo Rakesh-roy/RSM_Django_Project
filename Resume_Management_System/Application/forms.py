@@ -10,7 +10,7 @@ class RegistrationForm(forms.ModelForm):
     def clean_otp(self):
         contact = self.cleaned_data['contact']
         otp = random.randint(100000,999999)
-        message = 'Hello! Welcome To Resume Management System Your One Time Password is : '+str(otp)
+        message = 'Hello! Welcome To Resume Management System Your One Time Password is : ' +str(otp)
         sendOtpText(message,contact)
         return otp
 

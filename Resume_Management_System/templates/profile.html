@@ -10,6 +10,7 @@
         padding: 20px;
     }
     </style>
+    {% if request.session.contact %}
     <div class="card m-4">
     <h3 class="bg-warning text-center">Profile Page</h3>
     <table align="center">
@@ -18,6 +19,20 @@
         </tr>
     </table>
     </div>
+    {% else %}
+{#    <h3 class="bg-warning text-center">Profile Page</h3>#}
+    <div class="card m-4">
+    <table align="center">
+        <tr>
+            <th class="text-danger p-2">You Don't have permisions to access this section Please, Login to see Your Profile..!!</th>
+        </tr>
+        <tr>
+            <th><a href="{% url 'login' %}" class="btn btn-outline-primary m-2" style="float: right">Login</a></th>
+        </tr>
+    </table>
+    </div>
+
+    {% endif %}
 {% endblock %}
 
 
