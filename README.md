@@ -1,7 +1,7 @@
 # Resume Management Project
 >user can save their resumes in this website.
 
-# Menu Options
+## Menu Options
 - Home
 - Registration
 - Login
@@ -12,29 +12,29 @@
 - Logout
 - About Us
 
-# Models
+## Models
 - Registration Model
-  > Registration id
-  > Name
-  > Phone Number
-  > User Name (Email Id)
-  > Password
-  > otp
+  > Registration id,
+  > Name,
+  > Phone Number,
+  > User Name (Email Id),
+  > Password,
+  > otp,
   > status
 - Login
-  > User Name (Email Id)
-  > Password
+  > User Name (Email Id),
+  > Password,
 - Industries
-  > Education
-  > IT
+  > Education,
+  > IT,
   > Marketing
 - Profile
-  > Name
-  > Higher Education
-  > Photo
-  > CV
-  > Contact
-  > Email
+  > Name,
+  > Higher Education,
+  > Photo,
+  > CV,
+  > Contact,
+  > Email,
   > Industries Type
   
   
